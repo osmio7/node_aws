@@ -7,7 +7,7 @@ const rl = readline.createInterface({
 });
 
 async function searchWorkspaces() {
-  const client = new WorkSpacesClient({ region: "us-west-2" }); // Reemplaza "us-west-2" con tu región de AWS
+  const client = new WorkSpacesClient({ region: "eu-central-1" }); // Reemplaza "us-west-2" con tu región de AWS
 
   const params = {};
 
@@ -47,7 +47,7 @@ async function searchWorkspaces() {
 }
 
 async function startWorkspace(workspaceId) {
-  const client = new WorkSpacesClient({ region: "us-west-2" }); // Reemplaza "us-west-2" con tu región de AWS
+  const client = new WorkSpacesClient({ region: "eu-central-1" }); // Reemplaza "us-west-2" con tu región de AWS
 
   const params = {
     StartWorkspaceRequests: [
@@ -66,7 +66,7 @@ async function startWorkspace(workspaceId) {
 }
 
 async function stopWorkspace(workspaceId) {
-  const client = new WorkSpacesClient({ region: "us-west-2" }); // Reemplaza "us-west-2" con tu región de AWS
+  const client = new WorkSpacesClient({ region: "eu-central-1" }); // Reemplaza "us-west-2" con tu región de AWS
 
   const params = {
     StopWorkspaceRequests: [
