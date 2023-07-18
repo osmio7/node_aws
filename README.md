@@ -1,6 +1,7 @@
 # NodeJS AWS SDK
 
 Este proyecto tiene scripts de pruebas con el SDK de AWS WORKSPACES [AWS SDK](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html).
+Versión de Node: Node v18.16.1
 
 Instalar las dependencias 
 ```
