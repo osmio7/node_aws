@@ -2,6 +2,10 @@
 
 Este proyecto tiene scripts de pruebas con el SDK de AWS WORKSPACES [AWS SDK](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html).
 
+Instalar las dependencias 
+```
+npm install @aws-sdk/client-workspaces @aws-sdk/credential-provider-ini
+```
 ## Available Scripts
 
 Se cuentan con 2 scripts infows.js y statews.js:
