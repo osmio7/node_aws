@@ -5,7 +5,7 @@ const getWorkspacesInfo = async () => {
   const credentials = fromIni({ profile: "default" }); // Reemplaza "default" con el perfil deseado
 
   const workspacesClient = new WorkSpacesClient({
-    region: "us-west-2", // Reemplaza "us-west-2" con tu región AWS
+    region: "eu-central-1", // Reemplaza "us-west-2" con tu región AWS
     credentials
   });
 
@@ -15,12 +15,17 @@ const getWorkspacesInfo = async () => {
     const workspacesData = await workspacesClient.send(describeWorkspacesCommand);
 
     const workspacesInfo = workspacesData.Workspaces.map(workspace => ({
+      workspaceId: workspace.WorkspaceId,
       privateIp: workspace.IpAddress,
-      publicIp: workspace.PublicIpAddress,
-      username: workspace.UserName
+      state: workspace.State,
+      computername: workspace.ComputerName,
+      bundleId: workspace.BundleId,
+      directoryId: workspace.DirectoryId,     
+      username: workspace.UserName,
+      propertiesWs: workspace.WorkspaceProperties
     }));
 
-    return workspacesInfo;ls
+    return workspacesInfo;
   } catch (error) {
     console.error("Error al obtener información de los WorkSpaces:", error);
     throw error;
