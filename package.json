@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@aws-sdk/client-workspaces": "^3.370.0",
+    "@aws-sdk/credential-provider-ini": "^3.370.0",
+    "aws-sdk": "^2.1416.0"
+  }
+}
