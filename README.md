@@ -1,19 +1,19 @@
 # NodeJS AWS SDK
 
-Este proyecto tiene scripts de pruebas con el SDK de AWS WORKSPACES [AWS SDK](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html).
-Versión de Node: Node v18.16.1
+This project has test scripts with the AWS WORKSPACES SDK [AWS SDK](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html).
+Node Version: Node v18.16.1
 
-Instalar las dependencias 
+Install dependencies
 ```
 npm install @aws-sdk/client-workspaces @aws-sdk/credential-provider-ini
 ```
 ## Available Scripts
 
-Se cuentan con 2 scripts infows.js y statews.js:
+There are 2 scripts, infows.js and statews.js.
 
 ### `node infows.js`
 
-Nos mostrara los datos de los workspaces dados de altas, nos regresara la siguiente información:
+It will show us the data of the AWS workspaces and their information.:
 - workspaceId: workspace.WorkspaceId,
 - privateIp: workspace.IpAddress,
 - state: workspace.State,
@@ -25,6 +25,6 @@ Nos mostrara los datos de los workspaces dados de altas, nos regresara la siguie
 
 ### `node statews.js`
 
-Primeramente nos muestra los workspace con los que contamos su ID y su Estado, despues nos pedira:
-- Ingrese el ID de la instancia de WorkSpaces que desea encender o apagar:
-- Ingrese la acción que desea realizar (start/stop):
+First, it shows us the workspaces we have with their ID and status. Then it will ask us:
+- Enter the ID of the WorkSpaces instance you want to turn on or off:
+- Enter the action you want to perform (start/stop):
