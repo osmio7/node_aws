@@ -7,7 +7,7 @@ const rl = readline.createInterface({
 });
 
 async function searchWorkspaces() {
-  const client = new WorkSpacesClient({ region: "eu-central-1" }); // Reemplaza "us-west-2" con tu región de AWS
+  const client = new WorkSpacesClient({ region: "eu-central-1" }); // Replace "eu-central-1" with your AWS region
 
   const params = {};
 
@@ -15,15 +15,15 @@ async function searchWorkspaces() {
     const response = await client.send(new DescribeWorkspacesCommand(params));
 
     if (response.Workspaces.length > 0) {
-      console.log("Las siguientes instancias de WorkSpaces se encontraron:");
+      console.log("The following WorkSpaces instances were found:");
 
       response.Workspaces.forEach(workspace => {
         console.log(`ID: ${workspace.WorkspaceId}`);
-        console.log(`Estado: ${workspace.State}`);
+        console.log(`State: ${workspace.State}`);
         console.log("-----");
       });
 
-      rl.question("Ingrese el ID de la instancia de WorkSpaces que desea encender o apagar: ", async workspaceId => {
+      rl.question("Enter the ID of the WorkSpaces instance you want to start or stop: ", async workspaceId => {
         const action = await chooseAction();
 
         if (action === "start") {
@@ -31,23 +31,23 @@ async function searchWorkspaces() {
         } else if (action === "stop") {
           stopWorkspace(workspaceId);
         } else {
-          console.log("Opción inválida. Saliendo del programa.");
+          console.log("Invalid option. Exiting the program.");
         }
 
         rl.close();
       });
     } else {
-      console.log("No se encontraron instancias de WorkSpaces.");
+      console.log("No WorkSpaces instances were found.");
       rl.close();
     }
   } catch (error) {
-    console.error("Error al buscar las instancias de WorkSpaces:", error);
+    console.error("Error while searching for WorkSpaces instances:", error);
     rl.close();
   }
 }
 
 async function startWorkspace(workspaceId) {
-  const client = new WorkSpacesClient({ region: "eu-central-1" }); // Reemplaza "us-west-2" con tu región de AWS
+  const client = new WorkSpacesClient({ region: "eu-central-1" }); // Replace "eu-central-1" with your AWS region
 
   const params = {
     StartWorkspaceRequests: [
@@ -59,14 +59,14 @@ async function startWorkspace(workspaceId) {
 
   try {
     await client.send(new StartWorkspacesCommand(params));
-    console.log(`Se ha iniciado la instancia de WorkSpaces con ID ${workspaceId}.`);
+    console.log(`WorkSpaces instance with ID ${workspaceId} has been started.`);
   } catch (error) {
-    console.error(`Error al iniciar la instancia de WorkSpaces con ID ${workspaceId}:`, error);
+    console.error(`Error while starting WorkSpaces instance with ID ${workspaceId}:`, error);
   }
 }
 
 async function stopWorkspace(workspaceId) {
-  const client = new WorkSpacesClient({ region: "eu-central-1" }); // Reemplaza "us-west-2" con tu región de AWS
+  const client = new WorkSpacesClient({ region: "eu-central-1" }); // Replace "eu-central-1" with your AWS region
 
   const params = {
     StopWorkspaceRequests: [
@@ -78,23 +78,23 @@ async function stopWorkspace(workspaceId) {
 
   try {
     await client.send(new StopWorkspacesCommand(params));
-    console.log(`Se ha solicitado detener la instancia de WorkSpaces con ID ${workspaceId}.`);
+    console.log(`Request to stop WorkSpaces instance with ID ${workspaceId} has been sent.`);
   } catch (error) {
-    console.error(`Error al solicitar detener la instancia de WorkSpaces con ID ${workspaceId}:`, error);
+    console.error(`Error while requesting to stop WorkSpaces instance with ID ${workspaceId}:`, error);
   }
 }
 
 async function chooseAction() {
   return new Promise((resolve, reject) => {
-    rl.question("Ingrese la acción que desea realizar (start/stop): ", action => {
+    rl.question("Enter the action you want to perform (start/stop): ", action => {
       if (action === "start" || action === "stop") {
         resolve(action);
       } else {
-        reject(new Error("Opción inválida."));
+        reject(new Error("Invalid option."));
       }
     });
   });
 }
 
-// Llama a la función searchWorkspaces para buscar las instancias de WorkSpaces
+// Call the searchWorkspaces function to search for WorkSpaces instances
 searchWorkspaces();
