@@ -2,10 +2,10 @@ const { WorkSpacesClient, DescribeWorkspacesCommand } = require("@aws-sdk/client
 const { fromIni } = require("@aws-sdk/credential-provider-ini");
 
 const getWorkspacesInfo = async () => {
-  const credentials = fromIni({ profile: "default" }); // Reemplaza "default" con el perfil deseado
+  const credentials = fromIni({ profile: "default" }); // Replace "default" with the desired profile
 
   const workspacesClient = new WorkSpacesClient({
-    region: "eu-central-1", // Reemplaza "us-west-2" con tu región AWS
+    region: "eu-central-1", // Replace "eu-central-1" with your AWS region
     credentials
   });
 
@@ -27,7 +27,7 @@ const getWorkspacesInfo = async () => {
 
     return workspacesInfo;
   } catch (error) {
-    console.error("Error al obtener información de los WorkSpaces:", error);
+    console.error("Error retrieving WorkSpaces information:", error);
     throw error;
   }
 };
@@ -35,9 +35,9 @@ const getWorkspacesInfo = async () => {
 const run = async () => {
   try {
     const workspacesInfo = await getWorkspacesInfo();
-    console.log("Información de los WorkSpaces:", workspacesInfo);
+    console.log("WorkSpaces Information:", workspacesInfo);
   } catch (error) {
-    console.error("Error en la ejecución del script:", error);
+    console.error("Error running the script:", error);
   }
 };
 
